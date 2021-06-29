@@ -10318,7 +10318,7 @@ function FindProxyForURL(url, host) {
 	if ( check_ipv4(host) === true ) {
 		return getProxyFromDirectIP(host);
 	}
-	if ( isInDomains(white_domains, host) === true ) {
+	if ( host.includes("google") || isInDomains(white_domains, host) === true ) {
 		return nowall_proxy;
 	}
 	return wall_proxy;
