@@ -10312,13 +10312,16 @@ function isInDomains(domain_dict, host) {
 function FindProxyForURL(url, host) {
 	url=""+url;
 	host=""+host;
+	if ( host.includes("google") ) {
+		return wall_proxy; 
+	}
 	if ( isPlainHostName(host) === true ) {
 		return direct;
 	}
 	if ( check_ipv4(host) === true ) {
 		return getProxyFromDirectIP(host);
 	}
-	if ( host.includes("google") || isInDomains(white_domains, host) === true ) {
+	if (isInDomains(white_domains, host) === true ) {
 		return nowall_proxy;
 	}
 	return wall_proxy;
